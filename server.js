@@ -1,30 +1,16 @@
-/* ******************************************
- * This server.js file is the primary file of the 
- * application. It is used to control the project.
- *******************************************/
-/* ***********************
- * Require Statements
- *************************/
-const express = require("express")
-const env = require("dotenv").config()
-const app = express()
-const static = require("./routes/static")
+const express = require('express');
+const app = express();
 
-/* ***********************
- * Routes
- *************************/
-app.use(static)
+// 1. Make sure you have these requires:
+const staticRoutes = require('./routes/static');
 
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-const port = process.env.PORT
-const host = process.env.HOST
+// 2. View engine setup (if using EJS)
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
-/* ***********************
- * Log statement to confirm server operation
- *************************/
-app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
-})
+// 3. Route registration (MOST IMPORTANT PART)
+app.use('/', staticRoutes); // This connects your static.js routes
+
+app.listen(5500, () => {
+  console.log('Server running on port 5500');
+});
