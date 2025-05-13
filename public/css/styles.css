@@ -4,3 +4,12 @@
 *:after {
   box-sizing: border-box;
 }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+}
+h1 {
+  color: #0066cc;
+}
+
